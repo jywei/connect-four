@@ -1,35 +1,46 @@
 class Setup
-  attr_accessor :player1, :player2
-  attr_reader   :players, :board
+  attr_accessor :player1, :player2, :board, :grid, :players
 
   def initialize
-    @player1 = Player.new(name: "Player 1", mark: "X")
-    @player2 = Player.new(name: "Player 2", mark: "O")
-    @players = [player1, player2]
-    @board   = Board.new.two_dimensional_arrays
+    @board = Board.new
+    @grid  = Grid.new(@board)
   end
 
-  def setup
+  def execute
     prompt_players_info
     start_game
   rescue Interrupt
-    exit_game
+    finish_game
   end
 
   private
 
   def start_game
+    @game.start_game
   end
 
-  def exit_game
+  def finish_game
+    @game.finish_game
   end
 
   def prompt_players_info
-    printer.print_board
-    puts "Player 1 name:"
-    player1.name = STDIN.gets.chomp
-    printer.print_board
-    puts "Player 2 name:"
-    player2.name = STDIN.gets.chomp
+    grid.print_board
+    puts "Player 1 name: (or press ENTER to play by computer)"
+    first_input = STDIN.gets.chomp
+    @player1 = if first_input.empty?
+                 Computer.new(name: "Hal3000", symbol: "O")
+               else
+                 Human.new(name: first_input, symbol: "O")
+               end
+    grid.print_board
+    puts "Player 2 name: (or press ENTER to play by computer)"
+    second_input = STDIN.gets.chomp
+    @player2 = if second_input.empty?
+                 Computer.new(name: "Skynet", symbol: "X")
+               else
+                 Human.new(name: second_input, symbol: "X")
+               end
+    @players = [player1, player2]
+    @game = Game.new(@board, @grid, @players)
   end
 end
