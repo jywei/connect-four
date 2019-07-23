@@ -1,3 +1,6 @@
+require_relative "../lib/connect_four/player.rb"
+require_relative "../lib/connect_four/human.rb"
+
 describe Human do
   let(:human_player1) { described_class.new(name: "Roy", symbol: "X") }
   let(:human_player2) { described_class.new(name: "Wei", symbol: "O") }
@@ -13,7 +16,7 @@ describe Human do
     end
 
     it "has a symbol" do
-      expect(human_player1.symbol).to eql("X")
+      expect(human_player1.symbol).to eq "X"
     end
   end
 end
