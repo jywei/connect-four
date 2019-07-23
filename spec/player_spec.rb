@@ -1,7 +1,6 @@
 describe Player do
   let(:player1) { described_class.new(name: "Roy", symbol: "X") }
   let(:player2) { described_class.new(name: "Wei", symbol: "O") }
-  let(:players) { [player1, player2] }
 
   describe "attributes" do
     it "has a name" do
