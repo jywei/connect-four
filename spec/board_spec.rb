@@ -5,7 +5,7 @@ describe Board do
 
   describe "attributes" do
     it "has a board" do
-      expect(board.board).to be_a(Array)
+      expect(board.two_dimensional_arrays).to be_a(Array)
     end
 
   end

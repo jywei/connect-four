@@ -1,12 +1,12 @@
 class Board
 
-  attr_accessor :board
+  attr_accessor :two_dimensional_arrays
 
   def initialize
     create_board
   end
 
   def create_board
-    @board = Array.new(6) { Array.new(7) { "-" } }
+    @two_dimensional_arrays = Array.new(6) { Array.new(7) { "-" } }
   end
 end
