@@ -6,4 +6,8 @@ class Computer < Player
     rand(0..6)
   end
 
+  def winning_message
+    puts "#{name} RULES! 💀💀💀💀💀 Try again? (y/n)"
+  end
+
 end

@@ -5,4 +5,7 @@ class Human < Player
     check_column_range(grid)
   end
 
+  def winning_message
+    puts "🎆🎆🎆🎆🎆 #{name} WINS! Try again? (y/n)"
+  end
 end
