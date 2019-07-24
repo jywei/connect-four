@@ -7,11 +7,6 @@ class Player
     @symbol = symbol
   end
 
-  def prompt_column(grid)
-    puts "#{name}, please select a column:"
-    check_column_range(grid)
-  end
-
   private
 
   def check_column_range(grid)
@@ -21,7 +16,7 @@ class Player
       finish_game           if input == "exit".downcase
 
       grid.print_board
-      puts "'#{input}' is not a correct column.\n\nIntroduce a column:"
+      puts "'#{input}' is not a correct column.\n\nPlease select a column:"
     end
   end
 
