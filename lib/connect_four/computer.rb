@@ -7,7 +7,7 @@ class Computer < Player
   end
 
   def winning_message
-    puts "#{name} RULES! 💀💀💀💀💀 Try again? (y/n)"
+    puts "#{name} with '#{symbol}' RULES! 💀💀💀💀💀 Try again? (y/n)"
   end
 
 end
