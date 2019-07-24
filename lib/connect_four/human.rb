@@ -1,7 +1,7 @@
 class Human < Player
 
   def prompt_column(grid)
-    puts "#{name}, introduce a column:"
+    puts "#{name}, please select a column:"
     check_column_range(grid)
   end
 
