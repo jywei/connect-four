@@ -6,6 +6,7 @@ class Game
     @board   = board
     @grid    = grid
     @players = players
+    @move    = 0
   end
 
   def start_game
@@ -32,11 +33,12 @@ class Game
 
   def restart_game
     board.create_board
+    @move = 0
     start_game
   end
 
   def type_yes_or_no
-    grid.print_board
+    print_board_and_display_move
     puts "Please enter 'y' or 'n'"
   end
 
@@ -47,14 +49,15 @@ class Game
       players.each do |player|
         valid, print_board = false, true
         until valid
-          grid.print_board if print_board
+          print_board_and_display_move if print_board
           column = player.prompt_column(grid)
           if board.can_fill?(column)
             valid = true
             board.fill_column(column, player, grid)
+            @move += 1
             check_winner(player)
           end
-          grid.print_board
+          print_board_and_display_move
           puts "Column #{column + 1} is full. Please retry!\n\n"
           print_board = false
         end
@@ -63,14 +66,22 @@ class Game
   end
 
   def winner(player)
-    grid.print_board
+    print_board_and_display_move
     player.winning_message
     try_again
   end
 
   def check_winner(player)
+    check_draw
     check_rows_and_columns(player)
     check_diagonals(player)
+  end
+
+  def check_draw
+    return unless @move == 42
+    print_board_and_display_move
+    puts "Well that's awkward, rematch? (y/n)"
+    try_again
   end
 
   def check_rows_and_columns(player)
@@ -113,6 +124,11 @@ class Game
         [2, 3], [2, 4], [2, 5], [2, 6]
       ]
     }
+  end
+
+  def print_board_and_display_move
+    grid.print_board
+    puts "Total Move#{@move == 1 ? '' : 's'}: #{@move}"
   end
 
 end
