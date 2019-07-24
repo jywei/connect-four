@@ -8,6 +8,14 @@ class Board
 
   def create_board
     @two_dimensional_arrays = Array.new(6) { Array.new(7) { "." } }
+    # @two_dimensional_arrays = [
+    #   [".", ".", ".", ".", ".", ".", "."],
+    #   [".", ".", ".", ".", ".", ".", "."],
+    #   [".", ".", ".", ".", ".", ".", "."],
+    #   [".", ".", "O", "X", ".", ".", "."],
+    #   [".", "O", "O", "X", ".", ".", "."],
+    #   ["O", "X", "X", "X", "O", ".", "."]
+    # ]
   end
 
   def fill_column(column, player, grid)
