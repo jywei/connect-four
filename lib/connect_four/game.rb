@@ -52,9 +52,8 @@ class Game
           print_board_and_display_move if print_board
           column = player.prompt_column(grid)
           if board.can_fill?(column)
-            valid = true
             board.fill_column(column, player, grid)
-            @move += 1
+            valid = true and @move += 1
             check_winner(player)
           end
           print_board_and_display_move
@@ -102,9 +101,7 @@ class Game
   end
 
   def check_arrays(arrays, player)
-    arrays.each do |row|
-      checking_four_in_a_row(row, player)
-    end
+    arrays.each { |row| checking_four_in_a_row(row, player) }
   end
 
   def checking_four_in_a_row(array, player)

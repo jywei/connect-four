@@ -1,4 +1,5 @@
 class Setup
+
   attr_accessor :player1, :player2, :board, :grid, :players
 
   def initialize

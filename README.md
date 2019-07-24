@@ -2,9 +2,13 @@
 
 Connect Four command line game
 
-Run `ruby run.rb`
+Run the game:
 
-Running tests:
+```
+ruby run.rb
+```
+
+Run tests:
 
 ```
 bundle
