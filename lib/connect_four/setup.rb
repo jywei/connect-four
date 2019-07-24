@@ -8,22 +8,27 @@ class Setup
 
   def execute
     prompt_players_info
-    start_game
+    @game.start_game
   rescue Interrupt
     finish_game
   end
 
   private
 
-  def start_game
-    @game.start_game
-  end
-
   def finish_game
-    @game.finish_game
+    system "clear" or system "cls"
+    puts "Well, that's it!\n\n"
+    exit
   end
 
   def prompt_players_info
+    prompt_first_player
+    prompt_second_player
+    @players = [player1, player2]
+    @game = Game.new(board, grid, players)
+  end
+
+  def prompt_first_player
     grid.print_board
     puts "Player 1 name: (or press ENTER to play by computer)"
     first_input = STDIN.gets.chomp
@@ -32,6 +37,9 @@ class Setup
                else
                  Human.new(name: first_input, symbol: "O")
                end
+  end
+
+  def prompt_second_player
     grid.print_board
     puts "Player 2 name: (or press ENTER to play by computer)"
     second_input = STDIN.gets.chomp
@@ -40,7 +48,5 @@ class Setup
                else
                  Human.new(name: second_input, symbol: "X")
                end
-    @players = [player1, player2]
-    @game = Game.new(@board, @grid, @players)
   end
 end
