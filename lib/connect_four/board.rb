@@ -10,7 +10,7 @@ class Board
     @two_dimensional_arrays = Array.new(6) { Array.new(7) { "." } }
   end
 
-  def fill_column(column, player, grid)
+  def fill_column(column, player)
     # fill symbols from buttom to the top
     @two_dimensional_arrays.reverse.each do |row|
       next unless row[column] == "."

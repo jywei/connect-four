@@ -65,7 +65,7 @@ class Game
           print_board_and_display_move if print_board
           column = player.prompt_column(grid)
           if board.can_fill?(column)
-            board.fill_column(column, player, grid)
+            board.fill_column(column, player)
             valid = true and @move += 1
             check_winner(player)
           end
