@@ -102,6 +102,7 @@ class Game
   end
 
   def check_diagonals(player)
+    return unless board.should_check_diagonal?
     diagonal_winning_options.each do |direction, starting_point|
       starting_point.each do |start|
         array_for_testing = []
