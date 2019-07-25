@@ -23,6 +23,7 @@ class Board
     @two_dimensional_arrays.map { |row| row[column] }.any? { |slot| slot == "." }
   end
 
+  # Don't need to check diagonal result when in the bottom three rows
   def should_check_diagonal?
     return false unless @two_dimensional_arrays[2].any? { |column| column != "." }
     true
